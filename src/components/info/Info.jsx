@@ -1,6 +1,17 @@
 import Post from "@/components/post/Post";
+import data from "@/data/data";
 
 function Info() {
+  const posts = data.map((post) => (
+    <Post
+      key={post.id}
+      title={post.title}
+      desc={post.desc}
+      time={post.time}
+      date={post.date}
+    />
+  ));
+
   return (
     <main className="flex bg-white text-black min-h-screen flex-col">
       <div className="px-20 ">
@@ -61,11 +72,7 @@ function Info() {
         <div>
           <h1 className="text-4xl font-bold px-20">Blog and Posts</h1>
         </div>
-        <div>
-          <Post />
-          <Post />
-          <Post />
-        </div>
+        <div>{posts}</div>
       </div>
 
       <hr />
