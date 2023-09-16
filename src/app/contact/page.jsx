@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import profilePic from "/public/about.jpg";
 
@@ -7,6 +9,18 @@ export const metadata = {
 };
 
 function Contact() {
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const data = {
+      name: String(e.target.name.value),
+      email: String(e.target.email.value),
+      message: String(e.target.message.value),
+    };
+
+    console.log(data);
+  }
+
   return (
     <div className="px-4 flex flex-col justify-center bg-gray-400 min-h-screen">
       <h1 className="text-5xl text-blue-900"> Lets talk about it!</h1>
@@ -21,9 +35,17 @@ function Contact() {
           />
         </div>
         <div>
-          <form action="#" className="flex flex-col p-2">
+          <form
+            action="#"
+            onSubmit={handleSubmit}
+            className="flex flex-col p-2"
+          >
             <label htmlFor="name">Name: </label>
             <input
+              id="name"
+              required
+              minLength={3}
+              maxLength={150}
               type="text"
               placeholder="Yuri"
               className="p-2 mt-0 focus:outline-none bg-gray-300 text-gray-800"
@@ -32,6 +54,9 @@ function Contact() {
               Email:{" "}
             </label>
             <input
+              minLength={5}
+              maxLength={100}
+              required
               type="email"
               placeholder="yuri@gmail.com"
               className="p-2 focus:outline-none bg-gray-300 text-gray-800"
@@ -43,9 +68,15 @@ function Contact() {
               cols="30"
               rows="10"
               placeholder="message"
+              minLength={10}
+              maxLength={300}
+              required
             ></textarea>
             <div className="flex justify-center mt-2">
-              <button className="p-2 mt-2 border rounded inline-block w-32 bg-gray-500 hover:bg-gray-700 transition duration-200 text-white font-bold px-4">
+              <button
+                type="submit"
+                className="p-2 mt-2 border rounded inline-block w-32 bg-gray-500 hover:bg-gray-700 transition duration-200 text-white font-bold px-4"
+              >
                 Send
               </button>
             </div>

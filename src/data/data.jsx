@@ -21,6 +21,13 @@ const data = [
     time: "3 min",
     date: "30st May,2023",
   },
+  {
+    id: 4,
+    title: "A Sneak Peak into APIs in JavaScript Applications.",
+    desc: "Working with APIs in JavaScript - explaining how to incorporate APIs into JavaScript applications to retrieve and manipulate data from external source",
+    time: "4 min",
+    date: "4th August,2023",
+  },
 ];
 
 export default data;
